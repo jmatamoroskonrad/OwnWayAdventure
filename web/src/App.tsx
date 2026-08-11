@@ -1,7 +1,9 @@
+import HeroPage from "./pages/HeroPage";
+
 function App() {
   return (
     <>
-      <h1>Hola mundo</h1>
+      <HeroPage></HeroPage>
     </>
   );
 }
