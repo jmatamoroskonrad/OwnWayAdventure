@@ -1,10 +1,11 @@
-import HeroPage from "./pages/HeroPage";
+import { AppRouter } from "./routes/router";
+import { AppProviders } from "./providers/AppProviders";
 
 function App() {
   return (
-    <>
-      <HeroPage></HeroPage>
-    </>
+    <AppProviders>
+      <AppRouter />
+    </AppProviders>
   );
 }
 
