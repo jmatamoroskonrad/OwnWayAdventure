@@ -1,5 +1,6 @@
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { AppLayout } from "@/layouts/AppLayout/AppLayout";
+import RitmoPage from "@/pages/RitmoPage";
 
 import HeroPage from "@/pages/HeroPage";
 
@@ -8,6 +9,7 @@ export function AppRouter() {
     <Routes>
       <Route element={<AppLayout />}>
         <Route path="/" element={<HeroPage />} />
+        <Route path="/ritmo" element={<RitmoPage />} />
       </Route>
     </Routes>
   );

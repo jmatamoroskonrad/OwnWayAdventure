@@ -7,7 +7,7 @@ export function AppContainer({
   ...rest
 }: AppContainerProps) {
   return (
-    <div {...rest} className={cn("mx-auto", className)}>
+    <div {...rest} className={cn("mx-auto px-2", className)}>
       {children}
     </div>
   );

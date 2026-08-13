@@ -6,7 +6,7 @@ import { ScrollTop } from "@/routes/ScrollTop";
 
 export function AppLayout() {
   return (
-    <div>
+    <div className="wave-background min-h-screen">
       <ScrollTop />
       <AppHeader />
       <main>
