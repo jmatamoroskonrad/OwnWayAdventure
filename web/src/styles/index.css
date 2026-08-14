@@ -1,32 +1,53 @@
+@import url('https://googleapis.com');
 @import "tailwindcss";
 
-@layer utilities {
-    .wave-background {
-        position: relative;
-        isolation: isolate;
-    }
+@theme {
+  /* Colors  */
+  --color-primary-background: #eeead1;
+  --color-primary-foreground: #211003;
+  --color-primary-button: #c01a2f;
+  --color-success-button: #10b968;
+  --color-primary-text: #815b47;
 
-    .wave-background::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        background-color: #eeead1;
-        opacity: 0.3;
-        background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #eeead1 12px ), repeating-linear-gradient( #29221f55, #29221f );
-        mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 75%);
-        -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 75%);
-        mask-size: 100% 100%;
-        -webkit-mask-size: 100% 100%;
-        mask-repeat: no-repeat;
-        -webkit-mask-repeat: no-repeat;
-    }
+
+
+  /* Breakpoints */
+  --breakpoint-tablet: 900px;
+  --breakpoint-desktop: 1440px;
+
+
+
+  /* Fonts */
+  --font-bricolage: "Bricolage Grotesque", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
 }
 
-@theme {
-    --color-primary-background: #eeead1;
-    --color-primary-foreground: #211003;
+@layer base {
+  :root {
+    --font-body: var(--font-jakarta);
+    --font-heading: var(--font-bricolage);
+  }
+  
+  body {
+    font-family: var(--font-body);
+  }
 
-    --breakpoint-tablet: 900px;
-    --breakpoint-desktop: 1440px;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  .wave-background {
+    position: relative;
+    isolation: isolate;
+  }
+  .wave-background::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.5;
+    background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #eeead1 11px ), repeating-linear-gradient( #d6d2bc55, #d6d2bc );
+  }
 }
