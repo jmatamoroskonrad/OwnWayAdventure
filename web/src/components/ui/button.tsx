@@ -5,12 +5,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center  rounded-xl transition-all text-sm font-semibold  text-primary-foreground duration-200 ease-out gap-2 shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-2 focus-visible:ring-primary-button/50 focus-visible:ring-offset-2",
+  "p-[19px_28px] border-0 rounded-[18px]  text-[rgb(237,234,208)] text-xl font-extrabold  min-h-16 shadow-[rgba(191,26,47,0.4)_0px_14px_30px] inline-flex items-center gap-2",
   {
     variants: {
       variant: {
         primary:
-        "bg-primary-button ",
+        "bg-primary-red primary-text",
         success:
         "bg-success-button ",
         outline:
@@ -43,14 +43,16 @@ export interface ButtonProps
 
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({className, variant, size, effect,  asChild = false, ...props }, ref) => {
+    ({className, variant, size, effect,  asChild = false,children, ...props }, ref) => {
         const Comp = asChild ? Slot : "button";
         return (
-            <Comp
-            className={cn(buttonVariants({variant, size, effect,  className}))}
-            ref={ref}
-            {...props}
-            />
+             <Comp
+                className={cn(buttonVariants({ variant, size, effect, className }))}
+                ref={ref}
+                {...props}
+            >
+                {children}
+            </Comp>
         );
     },
 );
