@@ -5,58 +5,59 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "p-[19px_28px] border-0 rounded-[18px]  text-[rgb(237,234,208)] text-xl font-extrabold  min-h-16 shadow-[rgba(191,26,47,0.4)_0px_14px_30px] inline-flex items-center gap-2",
+  "inline-flex items-center justify-center border-0 text-[rgb(237,234,208)] text-xl font-extrabold min-h-16 shadow-[rgba(191,26,47,0.4)_0px_14px_30px] transition-all duration-200 ease-in-out",
   {
     variants: {
       variant: {
-        primary:
-        "bg-primary-red primary-text",
-        success:
-        "bg-success-button ",
+        primary: "bg-primary-red text-primary-text",
+        success: "bg-success-button",
         outline:
-        "border border-primary-foreground bg-transparent hover:bg-primary-text"
+          "border border-primary-text text-primary-text hover:text-white bg-transparent shadow-none",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        default: "p-[19px_28px] rounded-3xl",
+        sm: "h-9 rounded-xl px-3 text-sm min-h-0",
+        lg: "p-[19px_36px] rounded-3xl w-full tablet:w-auto",
+        icon: "h-10 w-10 rounded-xl min-h-0",
       },
       effect: {
         none: "",
-        glow: "hover:-translate-y-[3px] hover:shadow-[0_8px_20px_rgba(255,0,0,0.6)] active:scale-[0.985] active:shadow-[0_4px_10px_rgba(255,0,0,0.8)] transition-all duration-200 ease-in-out"
-      }
+        glow: "hover:-translate-y-[3px] hover:shadow-[0_8px_20px_rgba(255,0,0,0.6)] active:scale-[0.985] active:shadow-[0_4px_10px_rgba(255,0,0,0.8)]",
+      },
     },
     defaultVariants: {
       variant: "primary",
-      size: "default",
-      effect: "none"
+      size: "lg",
+      effect: "none",
     },
   },
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 
-
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({className, variant, size, effect,  asChild = false,children, ...props }, ref) => {
-        const Comp = asChild ? Slot : "button";
-        return (
-             <Comp
-                className={cn(buttonVariants({ variant, size, effect, className }))}
-                ref={ref}
-                {...props}
-            >
-                {children}
-            </Comp>
-        );
-    },
+  (
+    { className, variant, size, effect, asChild = false, children, ...props },
+    ref,
+  ) => {
+    const Comp = asChild ? Slot : "button";
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, effect, className }))}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </Comp>
+    );
+  },
 );
 
 Button.displayName = "Button";
 
-export {Button, buttonVariants}
+export { Button, buttonVariants };

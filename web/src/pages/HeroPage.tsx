@@ -1,7 +1,8 @@
 import heroImage from "./../assets/hero/hero-bg-responsive.jpeg";
-import { FilterCard } from "@/components/FilterCard";
+
 import { HeroBanner } from "@/components/HeroBanner";
 import { SchedulePreview } from "@/components/SchedulePreview";
+import { HorizontalCardsCarousel } from "@/components/HorizontalCardsCarousel";
 
 export default function HeroPage() {
   return (
@@ -13,14 +14,9 @@ export default function HeroPage() {
             alt="Image of a woman petting a horse"
           />
         </div>
-        <SchedulePreview experienceCount="2" totalAmount={148}/>
+        <SchedulePreview experienceCount="2" totalAmount={148} />
       </div>
-      <div className="flex gap-5">
-        <FilterCard emoji="🌋" title="Volcano" subtitle="volcano description" />
-        <FilterCard emoji="🌋" title="Volcano" subtitle="volcano description" />
-        <FilterCard emoji="🌋" title="Volcano" subtitle="volcano description" />
-        <FilterCard emoji="🌋" title="Volcano" subtitle="volcano description" />
-      </div>
+      <HorizontalCardsCarousel />
     </div>
   );
 }
