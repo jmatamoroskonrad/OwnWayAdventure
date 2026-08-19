@@ -1,0 +1,1 @@
+export {DetailsHeroImage} from "./DetailsHeroImage"

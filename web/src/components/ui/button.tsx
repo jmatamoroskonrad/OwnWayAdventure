@@ -12,11 +12,11 @@ const buttonVariants = cva(
         primary: "bg-primary-red text-primary-text",
         success: "bg-success-button",
         outline:
-          "border border-primary-text text-primary-text hover:text-white bg-transparent shadow-none",
+          "border border-primary-foreground/70 text-primary-foreground/70 hover:text-primary-foreground/90 hover:border-primary-foreground/90 bg-transparent shadow-none",
       },
       size: {
         default: "p-[19px_28px] rounded-3xl",
-        sm: "rounded-3xl p-[19px_36px] ",
+        sm: "rounded-3xl p-[19px_28px] ",
         lg: "p-[19px_36px] rounded-3xl w-full tablet:w-auto",
         icon: "h-10 w-10 rounded-xl ",
       },

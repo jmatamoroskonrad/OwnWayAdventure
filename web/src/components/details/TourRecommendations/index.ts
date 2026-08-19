@@ -1,0 +1,1 @@
+export {TourRecommendations } from "./TourRecommendations"

@@ -3,10 +3,11 @@ import heroImage from "./../assets/hero/hero-bg-responsive.jpeg";
 import { HeroBanner } from "@/components/HeroBanner";
 import { SchedulePreview } from "@/components/SchedulePreview";
 import { HorizontalCardsCarousel } from "@/components/HorizontalCardsCarousel";
+import { TourCard } from "@/components/TourCard";
 
 export default function HeroPage() {
   return (
-    <div>
+    <div >
       <div className="flex flex-col gap-2 tablet:grid tablet:grid-cols-[2fr_1fr]">
         <div className="tablet:h-full bg-transparent">
           <HeroBanner
@@ -17,6 +18,10 @@ export default function HeroPage() {
         <SchedulePreview experienceCount="2" totalAmount={148} />
       </div>
       <HorizontalCardsCarousel />
+     <div className="flex flex-col py-4 gap-4">
+       <TourCard/>
+      <TourCard/>
+     </div>
     </div>
   );
 }

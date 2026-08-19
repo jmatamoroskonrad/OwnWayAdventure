@@ -1,0 +1,70 @@
+import cardImage from "@/assets/hero/card-bg.jpeg";
+import { NavLink } from "react-router-dom";
+import { Button } from "../ui/button";
+import { Tag } from "../ui/tag";
+import { Check } from "lucide-react";
+
+export function TourCard() {
+  return (
+    <div className="flex flex-col rounded-4xl bg-primary-card-background border-primary-background/12 shadow-2xl transition-all duration-300">
+      <div className="relative h-58 shrink-0">
+        <div className="absolute inset-0 overflow-hidden rounded-t-4xl">
+          <img
+            data-dc-tpl="60"
+            id="ra-hero"
+            src={cardImage}
+            alt="image"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="absolute top-4 left-4 flex gap-2">
+          <span className="px-4 py-3 rounded-full text-sm font-bold uppercase tracking-widest bg-primary-green text-primary-text">
+            Popular
+          </span>
+        </div>
+      </div>
+      <div className="flex flex-col gap-4 p-6 ">
+        <div className="flex flex-col gap-3">
+          <h3 className="font-bricolage font-extrabold text-3xl tracking-[-0.03em] max-w-[20ch]">
+            {" "}
+            Arenal Lava & Forest Walk{" "}
+          </h3>
+          <p className="text-[15.5px] text-primary-foreground max-w-[40ch] text-pretty leading-[1.55]">
+            Rainforest trails and cooled lava flows on the volcano's north
+            flank, read out loud by a guide who grew up beneath it.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <Tag variant="green">Guide</Tag>
+          <Tag>Moderate</Tag>
+          <Tag>3 hours</Tag>
+        </div>
+        <div className="flex items-end gap-4 flex-wrap mt-auto pt-2">
+          <div className="flex flex-col">
+            <span className="font-bold uppercase text-primary-foreground/45  tracking-[0.14em] ">
+              From
+            </span>
+            <span className="font-bricolage font-extrabold text-3xl tracking-[-0.02em] leading-[1.1] ">
+              $58
+              <span className="text-sm text-primary-foreground/50 font-semibold">
+                {" "}
+                /person
+              </span>
+            </span>
+          </div>
+          <div className="flex gap-2.5 ml-auto flex-wrap">
+            <Button size="sm" variant="outline" effect="glow" >
+                Details
+            </Button>
+            <Button size="sm" variant="success" className="gap-1" effect="glow">
+              <Check strokeWidth="3" className="">
+                {" "}
+              </Check>{" "}
+              In your Ritmo
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
