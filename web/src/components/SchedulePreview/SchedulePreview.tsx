@@ -36,7 +36,7 @@ export function SchedulePreview({
             </div>
           </div>
           <Button  effect="glow"  >
-          Plan my days <MoveRight className="h-5 w-5 m-2" strokeWidth={3} />
+          See my days <MoveRight className="h-5 w-5 m-2" strokeWidth={3} />
         </Button>
         </div>
       </div>
