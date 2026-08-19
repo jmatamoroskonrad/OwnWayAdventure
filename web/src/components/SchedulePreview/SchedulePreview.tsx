@@ -2,7 +2,7 @@ import type { SchedulePreviewProps } from "./SchedulePreview.types";
 import { ScheduleActivityCardsScroll } from "@/components/ScheduleActivityCardsScroll";
 import { formatToLongDate } from "@/utils/dateUtils";
 import { Button } from "../ui/button";
-import { MoveRight, MountainSnow } from "lucide-react"
+import { MoveRight} from "lucide-react"
 
 const today: string = formatToLongDate();
 
@@ -25,7 +25,7 @@ export function SchedulePreview({
         <span className="text-sm font-semibold text-primary-text/50">
           {today}
         </span>
-        <div className="flex gap-4 mt-4">
+        <div className="flex gap-4 mt-4 justify-between items-center">
           <div className="flex flex-col justify-start">
             <span className="text-sm uppercase text-primary-text/50 ">
               Trip so far
@@ -35,7 +35,7 @@ export function SchedulePreview({
               <span>{totalAmount}</span>
             </div>
           </div>
-          <Button  effect="glow"  >
+          <Button size="sm"  effect="glow"  >
           See my days <MoveRight className="h-5 w-5 m-2" strokeWidth={3} />
         </Button>
         </div>
