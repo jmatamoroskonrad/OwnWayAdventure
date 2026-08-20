@@ -6,6 +6,7 @@ import { TourRecommendations } from "@/components/details/TourRecommendations";
 import toursMock from "@/mocks/tours.json";
 import type { Tour } from "@/types/tour";
 
+
 const tours = toursMock as Tour[];
 
 export default function DetailsPage() {
