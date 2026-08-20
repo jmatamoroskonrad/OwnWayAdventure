@@ -24,6 +24,9 @@ export function Navbar() {
         <NavLink to="/" className={({ isActive }) => navStyles(isActive)}>
           Explore
         </NavLink>
+        <NavLink to="tours" className={({ isActive }) => navStyles(isActive)}>
+          Our Activities
+        </NavLink>
         <NavLink to="ritmo" className={({ isActive }) => navStyles(isActive)}>
           My Ritmo
         </NavLink>
@@ -64,6 +67,15 @@ export function Navbar() {
             Explore experiences
           </NavLink>
 
+          <NavLink
+            to="tours"
+            onClick={() => setIsOpen(false)}
+            className={({ isActive }) =>
+              cn(navResponsiveStyles(isActive), " w-full   text-lg font-bold")
+            }
+          >
+            Our Activities
+          </NavLink>
           <NavLink
             to="ritmo"
             onClick={() => setIsOpen(false)}

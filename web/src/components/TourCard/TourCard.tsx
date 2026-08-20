@@ -14,7 +14,7 @@ export function TourCard({
   imageUrl
 }: TourCardProps) {
   return (
-    <div className="flex flex-col rounded-4xl bg-primary-card-background border-primary-background/12 shadow-2xl transition-all duration-300 tablet:max-w-2/4 desktop:max-w-1/4">
+    <div className="flex flex-col rounded-4xl bg-primary-card-background border-primary-background/12 shadow-2xl transition-all duration-300 mx-2 tablet:mx-0  ">
       <div className="relative h-58 tablet:h-80 shrink-0">
         <div className="absolute inset-0 overflow-hidden rounded-t-4xl">
           <img
@@ -33,7 +33,7 @@ export function TourCard({
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-4 p-6 ">
+      <div className="flex flex-col gap-4 p-6  h-full ">
         <div className="flex flex-col gap-3">
           <h3 className="font-bricolage font-extrabold text-3xl tracking-[-0.03em] max-w-[20ch]">
             {" "}
@@ -50,7 +50,7 @@ export function TourCard({
             </Tag>
           ))}
         </div>
-        <div className="flex items-end gap-4 flex-wrap mt-auto pt-2">
+        <div className="h-auto flex items-end gap-4 flex-wrap mt-auto pt-2 ">
           <div className="flex flex-col">
             <span className="font-bold uppercase text-primary-foreground/45  tracking-[0.14em] ">
               From

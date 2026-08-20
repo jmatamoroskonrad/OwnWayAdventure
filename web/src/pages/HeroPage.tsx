@@ -3,6 +3,7 @@ import heroImage from "./../assets/hero/hero-bg-responsive.jpeg";
 import { HeroBanner } from "@/components/HeroBanner";
 import { SchedulePreview } from "@/components/SchedulePreview";
 import { HorizontalCardsCarousel } from "@/components/HorizontalCardsCarousel";
+import { RitmoSticky } from "@/components/RitmoSticky";
 import { TourCard } from "@/components/TourCard";
 import toursMock from "@/mocks/tours.json";
 import type { Tour } from "@/types/tour";
@@ -12,7 +13,8 @@ const homeTours = tours.slice(0, 4);
 
 export default function HeroPage() {
   return (
-    <div >
+    <div>
+      <RitmoSticky title="HorseBack Riding quemado desde aqui " tourCount={2}/>
       <div className="flex flex-col gap-2 desktop:grid desktop:grid-cols-[2fr_1fr]">
         <div className="tablet:h-full bg-transparent">
           <HeroBanner
