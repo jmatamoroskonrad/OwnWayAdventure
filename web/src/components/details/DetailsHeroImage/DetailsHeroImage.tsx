@@ -5,7 +5,7 @@ import type { DetailsHeroImageProps } from "./DetailsHeroImage.types";
 
 export function DetailsHeroImage({imageUrl}:DetailsHeroImageProps) {
   return (
-    <div className="relative flex flex-col justify-center items-center gap-1.5 cursor-pointer -mx-2 -mt-2  h-auto max-h-[66vh] overflow-hidden">
+    <div className="relative flex flex-col justify-center items-center gap-1.5 cursor-pointer -mx-2 -mt-2  h-auto max-h-[66vh] overflow-hidden tablet:rounded-b-4xl ">
       <Button
         asChild
         size="sm"

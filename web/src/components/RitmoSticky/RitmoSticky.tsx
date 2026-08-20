@@ -3,7 +3,7 @@ import type { RitmoStickyProps } from "./RitmoSticky.types";
 
 export function RitmoSticky({ title, tourCount }: RitmoStickyProps) {
   return (
-    <div className="fixed bottom-1 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-sm">
+    <div className="fixed bottom-1 left-1/2 -translate-x-1/2 z-50  mx-auto px-2 w-full tablet:max-w-[75%] ">
       <div className="px-4 py-4 rounded-3xl bg-primary-foreground/98 flex flex-nowrap items-center justify-between gap-4 shadow-xl">
         <div className="flex flex-col gap-0.5 w-full min-w-0">
           <span className="uppercase text-[11px] font-extrabold tracking-[0.14em] text-primary-background/70 truncate block">

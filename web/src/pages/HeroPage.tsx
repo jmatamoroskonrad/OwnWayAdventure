@@ -25,7 +25,7 @@ export default function HeroPage() {
         <SchedulePreview experienceCount="2" totalAmount={148} />
       </div>
       <HorizontalCardsCarousel />
-     <div className="flex flex-col tablet:flex-row py-4 gap-4">
+     <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-4 py-4 gap-4">
        {homeTours.map((tour) => (
          <TourCard
            key={tour.id}
