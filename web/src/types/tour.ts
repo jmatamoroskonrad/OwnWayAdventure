@@ -19,5 +19,6 @@ export type Tour = {
   guests: number;
   goodToKnow: string;
   slots: TourSlot[];
-  whatsIncluded: string[]
+  whatsIncluded: string[];
+  imageUrl: string;
 };

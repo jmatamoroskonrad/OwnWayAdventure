@@ -8,12 +8,12 @@ import toursMock from "@/mocks/tours.json";
 import type { Tour } from "@/types/tour";
 
 const tours = toursMock as Tour[];
-const homeTours = tours.slice(0, 2);
+const homeTours = tours.slice(0, 4);
 
 export default function HeroPage() {
   return (
     <div >
-      <div className="flex flex-col gap-2 tablet:grid tablet:grid-cols-[2fr_1fr]">
+      <div className="flex flex-col gap-2 desktop:grid desktop:grid-cols-[2fr_1fr]">
         <div className="tablet:h-full bg-transparent">
           <HeroBanner
             image={heroImage}
@@ -23,7 +23,7 @@ export default function HeroPage() {
         <SchedulePreview experienceCount="2" totalAmount={148} />
       </div>
       <HorizontalCardsCarousel />
-     <div className="flex flex-col py-4 gap-4">
+     <div className="flex flex-col tablet:flex-row py-4 gap-4">
        {homeTours.map((tour) => (
          <TourCard
            key={tour.id}
@@ -33,6 +33,7 @@ export default function HeroPage() {
            tags={tour.tags}
            price={tour.price}
            popular={tour.popular}
+           imageUrl={tour.imageUrl}
          />
        ))}
      </div>

@@ -7,4 +7,5 @@ export type TourCardProps = {
   tags: TourTag[];
   price: number;
   popular?: boolean;
+  imageUrl: string;
 };

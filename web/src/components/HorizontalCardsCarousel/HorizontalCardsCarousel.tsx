@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 export function HorizontalCardsCarousel() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   return (
-    <div className="w-full max-w-6xl mx-auto px-1 text-black py-4 overflow-hidden">
+    <div className="w-full mx-auto px-1 text-black py-4 overflow-hidden">
       <div className="flex items-center justify-between mb-4 ">
         <div className="flex flex-col">
           <h2 className="font-bricolage font-extrabold text-3xl tracking-tight ">What is calling you?</h2>

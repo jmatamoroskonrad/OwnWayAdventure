@@ -17,8 +17,8 @@ export default function DetailsPage() {
   }
 
   return (
-    <div className="relative w-full h-full">
-      <DetailsHeroImage />
+    <div className="relative w-full h-full ">
+      <DetailsHeroImage imageUrl={tour.imageUrl}/>
       <TourDescription
         title={tour.title}
         description={tour.description}

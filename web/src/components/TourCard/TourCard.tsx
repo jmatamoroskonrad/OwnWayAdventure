@@ -1,4 +1,3 @@
-import cardImage from "@/assets/hero/card-bg.jpeg";
 import { Button } from "../ui/button";
 import { Tag } from "../ui/tag";
 import { Check } from "lucide-react";
@@ -12,15 +11,16 @@ export function TourCard({
   tags,
   price,
   popular,
+  imageUrl
 }: TourCardProps) {
   return (
-    <div className="flex flex-col rounded-4xl bg-primary-card-background border-primary-background/12 shadow-2xl transition-all duration-300">
-      <div className="relative h-58 shrink-0">
+    <div className="flex flex-col rounded-4xl bg-primary-card-background border-primary-background/12 shadow-2xl transition-all duration-300 tablet:max-w-2/4 desktop:max-w-1/4">
+      <div className="relative h-58 tablet:h-80 shrink-0">
         <div className="absolute inset-0 overflow-hidden rounded-t-4xl">
           <img
             data-dc-tpl="60"
             id="ra-hero"
-            src={cardImage}
+            src={imageUrl}
             alt="image"
             className="w-full h-full object-cover"
           />

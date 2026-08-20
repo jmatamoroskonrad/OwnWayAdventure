@@ -1,10 +1,11 @@
-import HeroPlaceImage from "@/assets/hero/card-bg.jpeg";
 import { NavLink } from "react-router-dom";
 import { MoveLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-export function DetailsHeroImage() {
+import type { DetailsHeroImageProps } from "./DetailsHeroImage.types";
+
+export function DetailsHeroImage({imageUrl}:DetailsHeroImageProps) {
   return (
-    <div className="relative flex flex-col justify-center items-center gap-1.5 cursor-pointer -mx-2 -mt-2  h-full">
+    <div className="relative flex flex-col justify-center items-center gap-1.5 cursor-pointer -mx-2 -mt-2  h-auto max-h-[66vh] overflow-hidden">
       <Button
         asChild
         size="sm"
@@ -17,8 +18,8 @@ export function DetailsHeroImage() {
         </NavLink>
       </Button>
       <img
-        className=" w-full h-full object-cover"
-        src={HeroPlaceImage}
+        className="w-full h-auto object-cover"
+        src={imageUrl}
         alt="product image"
       />
     </div>

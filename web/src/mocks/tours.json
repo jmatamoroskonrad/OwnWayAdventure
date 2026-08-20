@@ -1,8 +1,8 @@
 [
   {
     "id": "1",
-    "title": "Arenal Lava & Forest Walk 2",
-    "description": "Rainforest trails and cooled lava flows on the volcano's north flank, read out loud by a guide who grew up beneath it.",
+    "title": "Horseback Riding Tour With River Crossing",
+    "description": "Explore scenic rainforest trails, featuring an exciting river crossing where you can swim with your horse.",
     "tags": [
       { "label": "Guide", "variant": "green" },
       { "label": "Moderate" },
@@ -15,17 +15,18 @@
     "goodToKnow": "Wear closed shoes; the trail includes uneven volcanic rock. Bring water and sun protection.",
     "slots": [
       { "time": "8:00 AM", "spotsLeft": 1 },
-      { "time": "10:30 AM", "spotsLeft": 15 },
-      { "time": "02:30 AM", "spotsLeft": 4 }
+      { "time": "12:00 MD", "spotsLeft": 15 },
+      { "time": "03:00 PM", "spotsLeft": 4 }
     ],
-    "whatsIncluded": ["All", "Water"]
+    "whatsIncluded": ["All", "Water"],
+    "imageUrl": "/images/tours/tour1.jpeg"
   },
   {
     "id": "2",
-    "title": "Arenal Lava & Forest Walk",
-    "description": "Rainforest trails and cooled lava flows on the volcano's north flank, read out loud by a guide who grew up beneath it.",
+    "title": "Sloth Walk Observatory",
+    "description": "Spot sloths guaranteed in their natural habitat from our specialized viewing observatory.",
     "tags": [
-      { "label": "Guide", "variant": "green" },
+      { "label": "Self Guide", "variant": "green" },
       { "label": "Moderate" },
       { "label": "3 hours" }
     ],
@@ -35,15 +36,14 @@
     "guests": 2,
     "goodToKnow": "Wear closed shoes; the trail includes uneven volcanic rock. Bring water and sun protection.",
     "slots": [
-      { "time": "8:00 AM", "spotsLeft": 1 },
-      { "time": "10:30 AM", "spotsLeft": 15 },
-      { "time": "02:30 AM", "spotsLeft": 4 }
+    
     ],
-     "whatsIncluded": ["All", "Water"]
+    "whatsIncluded": ["All", "Water"],
+    "imageUrl": "/images/tours/tour2.jpeg"
   },
   {
     "id": "3",
-    "title": "Arenal Lava & Forest Walk",
+    "title": "Night Walk Tour",
     "description": "Rainforest trails and cooled lava flows on the volcano's north flank, read out loud by a guide who grew up beneath it.",
     "tags": [
       { "label": "Guide", "variant": "green" },
@@ -56,18 +56,18 @@
     "guests": 2,
     "goodToKnow": "Wear closed shoes; the trail includes uneven volcanic rock. Bring water and sun protection.",
     "slots": [
-      { "time": "8:00 AM", "spotsLeft": 1 },
-      { "time": "10:30 AM", "spotsLeft": 15 },
-      { "time": "02:30 AM", "spotsLeft": 4 }
+      { "time": "6:00 PM", "spotsLeft": 1 },
+      { "time": "8:00 PM", "spotsLeft": 15 }
     ],
-     "whatsIncluded": ["All", "Water"]
+    "whatsIncluded": ["All", "Water"],
+    "imageUrl": "/images/tours/tour3.jpg"
   },
   {
     "id": "4",
-    "title": "Arenal Lava & Forest Walk",
-    "description": "Rainforest trails and cooled lava flows on the volcano's north flank, read out loud by a guide who grew up beneath it.",
+ "title": "Arenal Volcano Hike",
+  "description": "Embark on an immersive uphill trek through lush forest trails along the slopes of the iconic Arenal Volcano.",
     "tags": [
-      { "label": "Guide", "variant": "green" },
+      { "label": "Self Guide", "variant": "green" },
       { "label": "Moderate" },
       { "label": "3 hours" }
     ],
@@ -77,11 +77,10 @@
     "guests": 2,
     "goodToKnow": "Wear closed shoes; the trail includes uneven volcanic rock. Bring water and sun protection.",
     "slots": [
-      { "time": "8:00 AM", "spotsLeft": 1 },
-      { "time": "10:30 AM", "spotsLeft": 15 },
-      { "time": "02:30 AM", "spotsLeft": 4 }
+
     ],
-     "whatsIncluded": ["All", "Water"]
+    "whatsIncluded": ["All", "Water"],
+    "imageUrl": "/images/tours/tour4.jpeg"
   },
   {
     "id": "5",
@@ -102,6 +101,7 @@
       { "time": "10:30 AM", "spotsLeft": 15 },
       { "time": "02:30 AM", "spotsLeft": 4 }
     ],
-     "whatsIncluded": ["All", "Water"]
+    "whatsIncluded": ["All", "Water"],
+    "imageUrl": "/images/tours/tour1.jpeg"
   }
 ]

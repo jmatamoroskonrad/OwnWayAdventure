@@ -7,7 +7,7 @@ export function AppContainer({
   ...rest
 }: AppContainerProps) {
   return (
-    <div {...rest} className={cn("mx-auto px-2", className)}>
+    <div {...rest} className={cn("mx-auto px-2 w-full tablet:max-w-[75%] ", className)}>
       {children}
     </div>
   );
