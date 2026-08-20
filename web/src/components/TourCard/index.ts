@@ -1,1 +1,2 @@
-export {TourCard } from "./TourCard"
+export { TourCard } from "./TourCard";
+export type { TourCardProps } from "./TourCard.types";

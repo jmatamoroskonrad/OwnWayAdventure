@@ -9,7 +9,7 @@ export function AppRouter() {
   return (
     <Routes>
       <Route element={<AppLayout />}>
-        <Route path="/details" element={<DetailsPage/>}/>
+        <Route path="/details/:id" element={<DetailsPage/>}/>
         <Route path="/" element={<HeroPage />} />
         <Route path="/ritmo" element={<RitmoPage />} />
       </Route>

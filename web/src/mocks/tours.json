@@ -1,0 +1,107 @@
+[
+  {
+    "id": "1",
+    "title": "Arenal Lava & Forest Walk 2",
+    "description": "Rainforest trails and cooled lava flows on the volcano's north flank, read out loud by a guide who grew up beneath it.",
+    "tags": [
+      { "label": "Guide", "variant": "green" },
+      { "label": "Moderate" },
+      { "label": "3 hours" }
+    ],
+    "duration": "3",
+    "price": 58,
+    "popular": true,
+    "guests": 2,
+    "goodToKnow": "Wear closed shoes; the trail includes uneven volcanic rock. Bring water and sun protection.",
+    "slots": [
+      { "time": "8:00 AM", "spotsLeft": 1 },
+      { "time": "10:30 AM", "spotsLeft": 15 },
+      { "time": "02:30 AM", "spotsLeft": 4 }
+    ],
+    "whatsIncluded": ["All", "Water"]
+  },
+  {
+    "id": "2",
+    "title": "Arenal Lava & Forest Walk",
+    "description": "Rainforest trails and cooled lava flows on the volcano's north flank, read out loud by a guide who grew up beneath it.",
+    "tags": [
+      { "label": "Guide", "variant": "green" },
+      { "label": "Moderate" },
+      { "label": "3 hours" }
+    ],
+    "duration": "3",
+    "price": 58,
+    "popular": true,
+    "guests": 2,
+    "goodToKnow": "Wear closed shoes; the trail includes uneven volcanic rock. Bring water and sun protection.",
+    "slots": [
+      { "time": "8:00 AM", "spotsLeft": 1 },
+      { "time": "10:30 AM", "spotsLeft": 15 },
+      { "time": "02:30 AM", "spotsLeft": 4 }
+    ],
+     "whatsIncluded": ["All", "Water"]
+  },
+  {
+    "id": "3",
+    "title": "Arenal Lava & Forest Walk",
+    "description": "Rainforest trails and cooled lava flows on the volcano's north flank, read out loud by a guide who grew up beneath it.",
+    "tags": [
+      { "label": "Guide", "variant": "green" },
+      { "label": "Moderate" },
+      { "label": "3 hours" }
+    ],
+    "duration": "3",
+    "price": 58,
+    "popular": true,
+    "guests": 2,
+    "goodToKnow": "Wear closed shoes; the trail includes uneven volcanic rock. Bring water and sun protection.",
+    "slots": [
+      { "time": "8:00 AM", "spotsLeft": 1 },
+      { "time": "10:30 AM", "spotsLeft": 15 },
+      { "time": "02:30 AM", "spotsLeft": 4 }
+    ],
+     "whatsIncluded": ["All", "Water"]
+  },
+  {
+    "id": "4",
+    "title": "Arenal Lava & Forest Walk",
+    "description": "Rainforest trails and cooled lava flows on the volcano's north flank, read out loud by a guide who grew up beneath it.",
+    "tags": [
+      { "label": "Guide", "variant": "green" },
+      { "label": "Moderate" },
+      { "label": "3 hours" }
+    ],
+    "duration": "3",
+    "price": 58,
+    "popular": true,
+    "guests": 2,
+    "goodToKnow": "Wear closed shoes; the trail includes uneven volcanic rock. Bring water and sun protection.",
+    "slots": [
+      { "time": "8:00 AM", "spotsLeft": 1 },
+      { "time": "10:30 AM", "spotsLeft": 15 },
+      { "time": "02:30 AM", "spotsLeft": 4 }
+    ],
+     "whatsIncluded": ["All", "Water"]
+  },
+  {
+    "id": "5",
+    "title": "Arenal Lava & Forest Walk",
+    "description": "Rainforest trails and cooled lava flows on the volcano's north flank, read out loud by a guide who grew up beneath it.",
+    "tags": [
+      { "label": "Guide", "variant": "green" },
+      { "label": "Moderate" },
+      { "label": "3 hours" }
+    ],
+    "duration": "3",
+    "price": 58,
+    "popular": true,
+    "guests": 2,
+    "goodToKnow": "Wear closed shoes; the trail includes uneven volcanic rock. Bring water and sun protection.",
+    "slots": [
+      { "time": "8:00 AM", "spotsLeft": 1 },
+      { "time": "10:30 AM", "spotsLeft": 15 },
+      { "time": "02:30 AM", "spotsLeft": 4 }
+    ],
+     "whatsIncluded": ["All", "Water"]
+  }
+]

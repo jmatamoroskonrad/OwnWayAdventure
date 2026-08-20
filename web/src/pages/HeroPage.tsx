@@ -4,6 +4,11 @@ import { HeroBanner } from "@/components/HeroBanner";
 import { SchedulePreview } from "@/components/SchedulePreview";
 import { HorizontalCardsCarousel } from "@/components/HorizontalCardsCarousel";
 import { TourCard } from "@/components/TourCard";
+import toursMock from "@/mocks/tours.json";
+import type { Tour } from "@/types/tour";
+
+const tours = toursMock as Tour[];
+const homeTours = tours.slice(0, 2);
 
 export default function HeroPage() {
   return (
@@ -19,8 +24,17 @@ export default function HeroPage() {
       </div>
       <HorizontalCardsCarousel />
      <div className="flex flex-col py-4 gap-4">
-       <TourCard/>
-      <TourCard/>
+       {homeTours.map((tour) => (
+         <TourCard
+           key={tour.id}
+           id={tour.id}
+           title={tour.title}
+           description={tour.description}
+           tags={tour.tags}
+           price={tour.price}
+           popular={tour.popular}
+         />
+       ))}
      </div>
     </div>
   );
