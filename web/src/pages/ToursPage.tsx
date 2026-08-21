@@ -54,6 +54,7 @@ export default function ToursPage() {
             price={tour.price}
             popular={tour.popular}
             imageUrl={tour.imageUrl}
+            slots={tour.slots}
           />
         ))}
       </div>

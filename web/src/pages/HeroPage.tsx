@@ -11,8 +11,8 @@ export default function HeroPage() {
   const { tours } = useTours();
   const homeTours = tours.slice(0, 4);
   return (
-    <div>
-      <RitmoSticky title="HorseBack Riding quemado desde aqui " tourCount={2}/>
+    <div >
+      {/* <RitmoSticky title="HorseBack Riding quemado desde aqui " tourCount={2}/> */}
       <div className="flex flex-col gap-2 desktop:grid desktop:grid-cols-[2fr_1fr]">
         <div className="tablet:h-full bg-transparent">
           <HeroBanner
@@ -34,6 +34,7 @@ export default function HeroPage() {
            price={tour.price}
            popular={tour.popular}
            imageUrl={tour.imageUrl}
+           slots={tour.slots}
          />
        ))}
      </div>

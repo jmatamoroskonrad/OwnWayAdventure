@@ -1,4 +1,4 @@
-import type { TourTag } from "@/types/tour";
+import type { TourTag, TourSlot } from "@/types/tour";
 
 export type TourCardProps = {
   id: string;
@@ -8,4 +8,5 @@ export type TourCardProps = {
   price: number;
   popular?: boolean;
   imageUrl: string;
+  slots: TourSlot[];
 };

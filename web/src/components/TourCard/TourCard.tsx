@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { Button } from "../ui/button";
 import { Tag } from "../ui/tag";
 import { Check } from "lucide-react";
 import type { TourCardProps } from "./TourCard.types";
-import {NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom";
+import { useRitmo } from "@/hooks/useRitmo";
+import { BookTourPopover } from "@/components/BookTour";
 
 export function TourCard({
   id,
@@ -11,8 +14,13 @@ export function TourCard({
   tags,
   price,
   popular,
-  imageUrl
+  imageUrl,
+  slots,
 }: TourCardProps) {
+  const { isInRitmo } = useRitmo();
+  const inRitmo = isInRitmo(id);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
   return (
     <div className="flex flex-col rounded-4xl bg-primary-card-background border-primary-background/12 shadow-2xl transition-all duration-300 mx-2 tablet:mx-0  ">
       <div className="relative h-58 tablet:h-80 shrink-0">
@@ -69,15 +77,30 @@ export function TourCard({
                  Details
                </NavLink>
             </Button>
-            <Button size="sm" variant="success" className="gap-1" effect="glow">
-              <Check strokeWidth="3" className="">
-                {" "}
-              </Check>{" "}
-              In your Ritmo
+            <Button
+              size="sm"
+              variant={inRitmo ? "success" : "primary"}
+              className="gap-1"
+              effect="glow"
+              onClick={(event) => {
+                event.stopPropagation();
+                setIsPopoverOpen(true);
+              }}
+            >
+              {inRitmo && <Check size={16} strokeWidth={3} />}
+              {inRitmo ? "In your Ritmo" : "Add to Ritmo"}
             </Button>
           </div>
         </div>
       </div>
+
+      <BookTourPopover
+        open={isPopoverOpen}
+        tourId={id}
+        slots={slots}
+        price={price}
+        onClose={() => setIsPopoverOpen(false)}
+      />
     </div>
   );
 }

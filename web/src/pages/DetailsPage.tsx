@@ -25,7 +25,7 @@ export default function DetailsPage() {
         tags={tour.tags}
         whatsIncluded={tour.whatsIncluded}
       />
-      <BookTour slots={tour.slots} price={tour.price} />
+      <BookTour tourId={tour.id} slots={tour.slots} price={tour.price} />
       <TourRecommendations goodToKnow={tour.goodToKnow} />
     </div>
   );
