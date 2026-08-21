@@ -5,13 +5,11 @@ import { SchedulePreview } from "@/components/SchedulePreview";
 import { HorizontalCardsCarousel } from "@/components/HorizontalCardsCarousel";
 import { RitmoSticky } from "@/components/RitmoSticky";
 import { TourCard } from "@/components/TourCard";
-import toursMock from "@/mocks/tours.json";
-import type { Tour } from "@/types/tour";
-
-const tours = toursMock as Tour[];
-const homeTours = tours.slice(0, 4);
+import { useTours } from "@/hooks/useTours";
 
 export default function HeroPage() {
+  const { tours } = useTours();
+  const homeTours = tours.slice(0, 4);
   return (
     <div>
       <RitmoSticky title="HorseBack Riding quemado desde aqui " tourCount={2}/>

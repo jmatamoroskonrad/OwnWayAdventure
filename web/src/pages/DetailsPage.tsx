@@ -3,15 +3,14 @@ import { DetailsHeroImage } from "@/components/details/DetailsHeroImage";
 import { TourDescription } from "@/components/details/TourDescription";
 import { BookTour } from "@/components/BookTour";
 import { TourRecommendations } from "@/components/details/TourRecommendations";
-import toursMock from "@/mocks/tours.json";
-import type { Tour } from "@/types/tour";
+import { useTours } from "@/hooks/useTours";
 
 
-const tours = toursMock as Tour[];
 
 export default function DetailsPage() {
   const { id } = useParams<{ id: string }>();
-  const tour = tours.find((tour) => tour.id === id);
+  const  {getTourById} = useTours();
+  const tour = getTourById(id ?? "")
 
   if (!tour) {
     return null;

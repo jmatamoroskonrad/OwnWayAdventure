@@ -25,3 +25,4 @@ export function DetailsHeroImage({imageUrl}:DetailsHeroImageProps) {
     </div>
   );
 }
+

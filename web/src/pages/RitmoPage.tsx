@@ -1,6 +1,7 @@
 import { RitmoHeader } from "@/components/ritmo/RitmoHeader";
 import { formatToLongDate } from "@/utils/dateUtils";
 import { TimeLine } from "@/components/ritmo/TimeLine";
+import { RitmoSummaryBar } from "@/components/ritmo/RitmoSummaryBar";
 
 export default function RitmoPage() {
   const today: string = formatToLongDate();
@@ -38,6 +39,14 @@ export default function RitmoPage() {
           duration: "3 hours",
           guests: 2,
         }}
+      />
+
+      <RitmoSummaryBar
+        experienceCount={2}
+        hoursPlanned={5}
+        guestCount={2}
+        total={148}
+        onConfirm={() => {}}
       />
     </div>
   );

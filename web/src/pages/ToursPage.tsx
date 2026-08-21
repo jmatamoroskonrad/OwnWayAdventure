@@ -1,12 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { TourCard } from "@/components/TourCard";
 import { Button } from "@/components/ui/button";
-import toursMock from "@/mocks/tours.json";
-import type { Tour } from "@/types/tour";
+import { useTours } from "@/hooks/useTours";
 
-const tours = toursMock as Tour[];
 
 export default function ToursPage() {
+  const { tours } = useTours();
   return (
     <div className="flex flex-col gap-8 py-4">
       <div className="flex flex-col gap-2">
