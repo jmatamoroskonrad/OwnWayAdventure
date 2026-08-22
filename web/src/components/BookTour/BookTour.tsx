@@ -2,7 +2,7 @@ import { Button } from "../ui/button";
 import type { BookTourProps } from "./BookTours.types";
 import { useBookTourState } from "@/hooks/useBookTourState";
 
-export function BookTour({ slots, price, tourId }: BookTourProps) {
+export function BookTour({ slots, price, tourId, onReserved }: BookTourProps) {
   const {
     hasSlots,
     selectedSlot,
@@ -16,6 +16,12 @@ export function BookTour({ slots, price, tourId }: BookTourProps) {
     decreaseGuests,
     toggleReservation,
   } = useBookTourState(tourId, slots, price);
+
+  const handleReserve = () => {
+    const wasReserved = reserved;
+    toggleReservation();
+    onReserved?.(!wasReserved);
+  };
 
   return (
     <div className="flex flex-col gap-5.5 p-5.5 rounded-[30px] bg-[repeating-radial-gradient(circle_at_100%_0%,rgba(237,234,208,0.07)_0px,rgba(237,234,208,0.07)_1px,transparent_1px,transparent_15px)] bg-[#211103] shadow-[rgba(33,17,3,0.3)_0px_22px_50px] text-primary-text">
@@ -77,7 +83,7 @@ export function BookTour({ slots, price, tourId }: BookTourProps) {
             </span>
           </div>
         </div>
-        <Button variant={reserved ? "success" : "primary"} onClick={toggleReservation}>
+        <Button variant={reserved ? "success" : "primary"} onClick={handleReserve}>
           {reserved ? "On your Ritmo" : "Make Reservation"}
         </Button>
       </div>

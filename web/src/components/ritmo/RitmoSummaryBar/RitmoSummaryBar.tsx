@@ -13,7 +13,7 @@ export function RitmoSummaryBar({
   disclaimer = DEFAULT_DISCLAIMER,
 }: RitmoSummaryBarProps) {
   return (
-    <div className="w-full flex flex-col gap-4 p-5 rounded-t-[26px] bg-[repeating-radial-gradient(circle_at_110%_-10%,rgba(237,234,208,0.08)_0px,rgba(237,234,208,0.08)_1px,transparent_1px,transparent_15px)] bg-[#211103] sticky bottom-0 z-20 shadow-[rgba(33,17,3,0.28)_0px_-20px_44px]">
+    <div className=" w-full flex flex-col gap-4 p-5 rounded-t-[26px] bg-[repeating-radial-gradient(circle_at_110%_-10%,rgba(237,234,208,0.08)_0px,rgba(237,234,208,0.08)_1px,transparent_1px,transparent_15px)] bg-[#211103] sticky bottom-0 z-20 shadow-[rgba(33,17,3,0.28)_0px_-20px_44px]">
       <div className="flex flex-col gap-1">
         <span className="text-xs font-extrabold tracking-[0.16em] uppercase text-primary-text/50">
           Your Ritmo · {experienceCount} experiences

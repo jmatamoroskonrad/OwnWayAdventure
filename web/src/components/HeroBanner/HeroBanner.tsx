@@ -5,7 +5,7 @@ export function HeroBanner({ image, alt }: HeroBannerProps) {
   return ( 
     <div 
       aria-label={alt} 
-      className="relative flex flex-col justify-end min-h-120 tablet:min-h-150 p-5 rounded-[30px] bg-[#211103] shadow-[rgba(33,17,3,0.3)_0px_22px_48px] overflow-hidden"
+      className="relative flex flex-col justify-end min-h-120 tablet:min-h-150 p-5 rounded-[30px] bg-[#211103] shadow-[rgba(33,17,3,0.3)_0px_22px_48px] overflow-hidden shrink-0"
     > 
       <div data-dc-tpl="59" className="absolute inset-0 z-0"> 
         <img 

@@ -1,53 +1,85 @@
+import { useState } from "react";
 import { RitmoHeader } from "@/components/ritmo/RitmoHeader";
-import { formatToLongDate } from "@/utils/dateUtils";
+import { formatToLongDate, parseTimeToMinutes } from "@/utils/dateUtils";
 import { TimeLine } from "@/components/ritmo/TimeLine";
 import { RitmoSummaryBar } from "@/components/ritmo/RitmoSummaryBar";
+import { BookTourPopover } from "@/components/BookTour";
+import { useRitmo } from "@/hooks/useRitmo";
+import { useTours } from "@/hooks/useTours";
+import { useRitmoSummary } from "@/hooks/useRitmoSummary";
 
 export default function RitmoPage() {
   const today: string = formatToLongDate();
+  const { bookings, removeBooking } = useRitmo();
+  const { getTourById } = useTours();
+  const { experienceCount, hoursPlanned, guestCount, total } =
+    useRitmoSummary();
+  const [editingTourId, setEditingTourId] = useState<string | null>(null);
+
+  const sortedBookings = [...bookings].sort(
+    (a, b) =>
+      parseTimeToMinutes(a.slot || "12:00 AM") -
+      parseTimeToMinutes(b.slot || "12:00 AM"),
+  );
+
+  const editingTour = editingTourId ? getTourById(editingTourId) : undefined;
+
   return (
-    <div>
-      <RitmoHeader toursCount={3} hoursCount={8} />
-      <div className="flex items-center gap-3.5 pt-3.5 pb-1.5 px-2 tablet:max-w-200">
-        <span className="font-bricolage font-extrabold text-2xl tracking-[-0.01em] text-primary-foreground">
-          {today}
-        </span>
-        <span className="flex-1 h-px bg-[repeating-linear-gradient(90deg,rgba(33,17,3,0.22)_0px,rgba(33,17,3,0.22)_6px,transparent_6px,transparent_12px)]"></span>
-        <span className="font-bricolage font-extrabold text-xl ">$148</span>
+    <div className="min-h-screen flex flex-col justify-between">
+      <div>
+        <RitmoHeader toursCount={experienceCount} hoursCount={hoursPlanned} />
+        <div className="flex items-center gap-3.5 pt-3.5 pb-1.5 px-2 tablet:max-w-200">
+          <span className="font-bricolage font-extrabold text-2xl tracking-[-0.01em] text-primary-foreground">
+            {today}
+          </span>
+          <span className="flex-1 h-px bg-[repeating-linear-gradient(90deg,rgba(33,17,3,0.22)_0px,rgba(33,17,3,0.22)_6px,transparent_6px,transparent_12px)]"></span>
+          <span className="font-bricolage font-extrabold text-xl ">
+            ${total}
+          </span>
+        </div>
+
+        {sortedBookings.length === 0 && <TimeLine time="9:00 AM" />}
+
+        {sortedBookings.map((booking) => {
+          const tour = getTourById(booking.tourId);
+          if (!tour) return null;
+
+          return (
+            <TimeLine
+              key={booking.bookingId}
+              time={booking.slot || "TBD"}
+              activity={{
+                image: tour.imageUrl,
+                price: tour.price * booking.guests,
+                badge: tour.tags[0]?.label ?? "Tour",
+                title: tour.title,
+                duration: `${tour.duration} hours`,
+                guests: booking.guests,
+              }}
+              onEdit={() => setEditingTourId(booking.tourId)}
+              onRemove={() => removeBooking(booking.bookingId)}
+            />
+          );
+        })}
       </div>
 
-      <TimeLine
-        time="8:00 AM"
-        activity={{
-          image: "/images/tours/tour1.jpeg",
-          price: 116,
-          badge: "Guided",
-          title: "Tour a Caballo",
-          duration: "3 hours",
-          guests: 2,
-        }}
-      />
-
-      <TimeLine time="11:00 AM" />
-      <TimeLine
-        time="3:00 PM"
-        activity={{
-          image: "/images/tours/tour2.jpeg",
-          price: 116,
-          badge: "Guided",
-          title: "Tour a Caballo",
-          duration: "3 hours",
-          guests: 2,
-        }}
-      />
-
       <RitmoSummaryBar
-        experienceCount={2}
-        hoursPlanned={5}
-        guestCount={2}
-        total={148}
+        experienceCount={experienceCount}
+        hoursPlanned={hoursPlanned}
+        guestCount={guestCount}
+        total={total}
         onConfirm={() => {}}
       />
+
+      {editingTour && (
+        <BookTourPopover
+          open={Boolean(editingTour)}
+          tourId={editingTour.id}
+          slots={editingTour.slots}
+          price={editingTour.price}
+          onClose={() => setEditingTourId(null)}
+        />
+      )}
     </div>
   );
 }
