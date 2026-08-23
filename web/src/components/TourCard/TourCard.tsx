@@ -58,7 +58,7 @@ export function TourCard({
             </Tag>
           ))}
         </div>
-        <div className="h-auto flex items-end gap-4 flex-wrap mt-auto pt-2 ">
+        <div className="h-auto flex  gap-4 flex-wrap mt-auto pt-2  items-center ">
           <div className="flex flex-col">
             <span className="font-bold uppercase text-primary-foreground/45  tracking-[0.14em] ">
               From

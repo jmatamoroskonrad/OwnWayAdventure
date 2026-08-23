@@ -16,7 +16,7 @@ const buttonVariants = cva(
       },
       size: {
         default: "p-[19px_28px] rounded-3xl",
-        sm: "rounded-3xl p-[19px_28px] ",
+        sm: "rounded-3xl p-[19px_22px] ",
         lg: "p-[19px_36px] rounded-3xl w-full tablet:w-auto",
         icon: "h-10 w-10 rounded-xl ",
       },

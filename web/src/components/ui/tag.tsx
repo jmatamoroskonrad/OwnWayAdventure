@@ -28,7 +28,7 @@ const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
     return (
       <span
         ref={ref}
-        className={cn(tagVariants({ variant, className }))}
+        className={cn(tagVariants({ variant: variant ?? undefined, className }))}
         {...props}
       />
     );

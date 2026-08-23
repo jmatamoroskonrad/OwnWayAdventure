@@ -1,5 +1,4 @@
 import { X } from "lucide-react";
-import { toast } from "sonner";
 import { Overlay } from "@/components/Overlay";
 import { BookTour } from "./BookTour";
 import type { BookTourPopoverProps } from "./BookTourPopover.types";
@@ -8,7 +7,6 @@ export function BookTourPopover({ open, tourId, slots, price, onClose }: BookTou
   const handleReserved = (added: boolean) => {
     onClose();
     if (added) {
-      toast.success("Added to your Ritmo");
     }
   };
 
