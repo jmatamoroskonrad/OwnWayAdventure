@@ -14,8 +14,11 @@ public class TourService {
         this.tourRepository = tourRepository;
     }
 
-    public List<TourResponse> findAll() {
-        return tourRepository.findAll().stream().map(this::toResponse).toList();
+    public List<TourResponse> findAll(String category) {
+        List<Tour> tours = (category == null || category.isBlank())
+                ? tourRepository.findAll()
+                : tourRepository.findByCategory(category);
+        return tours.stream().map(this::toResponse).toList();
     }
 
     public TourResponse findById(String id) {
@@ -51,6 +54,7 @@ public class TourService {
         tour.setPrice(request.price());
         tour.setPopular(request.popular());
         tour.setGuests(request.guests());
+        tour.setCategory(request.category());
         tour.setGoodToKnow(request.goodToKnow());
         tour.setImageUrl(request.imageUrl());
 
@@ -82,6 +86,7 @@ public class TourService {
                 tour.getPrice(),
                 tour.isPopular(),
                 tour.getGuests(),
+                tour.getCategory(),
                 tour.getGoodToKnow(),
                 tour.getImageUrl(),
                 tour.getTags(),

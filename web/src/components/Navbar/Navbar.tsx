@@ -4,10 +4,10 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 const navStyles = (isActive: boolean) =>
   cn(
-    "rounded-full px-5 py-2 transition-colors text-lg font-bold",
+    "rounded-full px-5 py-2 transition-all duration-200 text-lg font-bold h-16 flex items-center",
     isActive
-      ? "bg-primary-foreground text-primary-background"
-      : "text-primary-foreground",
+      ? "bg-primary-foreground text-primary-background shadow-[rgba(33,17,3,0.18)_0px_6px_16px]"
+      : "text-primary-foreground/65 hover:text-primary-foreground hover:bg-primary-foreground/8",
   );
 
 const navResponsiveStyles = (isActive: boolean) =>
@@ -20,7 +20,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <nav className="hidden  tablet:flex items-center justify-center gap-0 p-0.75 bg-primary-foreground/5 rounded-full ">
+      <nav className="hidden  tablet:flex items-center justify-center p-0.75 bg-primary-foreground/5 border border-primary-foreground/10 rounded-full gap-4 ">
         <NavLink to="/" className={({ isActive }) => navStyles(isActive)}>
           Explore
         </NavLink>

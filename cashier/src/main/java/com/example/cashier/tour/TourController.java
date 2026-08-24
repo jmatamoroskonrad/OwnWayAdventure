@@ -17,8 +17,8 @@ public class TourController {
     }
 
     @GetMapping
-    public List<TourResponse> list() {
-        return tourService.findAll();
+    public List<TourResponse> list(@RequestParam(required = false) String category) {
+        return tourService.findAll(category);
     }
 
     @GetMapping("/{id}")

@@ -18,6 +18,7 @@ export type Tour = {
   popular: boolean;
   guests: number;
   goodToKnow: string;
+  category: string;
   slots: TourSlot[];
   whatsIncluded: string[];
   imageUrl: string;

@@ -10,6 +10,7 @@ public record TourResponse(
         int price,
         boolean popular,
         int guests,
+        String category,
         String goodToKnow,
         String imageUrl,
         List<TourTag> tags,

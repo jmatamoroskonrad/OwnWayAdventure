@@ -29,24 +29,68 @@ const filterCardVariants = cva(
   },
 );
 
+const filterPillVariants = cva(
+  "scroll-mt-0 snap-start shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-full cursor-pointer transition-all duration-200 text-[14px] font-bold border-[1.5px] border-transparent",
+  {
+    variants: {
+      color: {
+        red: "",
+        green: "",
+        blue: "",
+        brown: "",
+      },
+      selected: {
+        true: "scale-105 text-[#edead0]",
+        false: "bg-white text-[#211103]",
+      },
+    },
+    compoundVariants: [
+      { color: "red", selected: true, class: "bg-primary-red" },
+      { color: "green", selected: true, class: "bg-primary-green" },
+      { color: "blue", selected: true, class: "bg-primary-blue" },
+      { color: "brown", selected: true, class: "bg-primary-foreground" },
+    ],
+    defaultVariants: {
+      color: "red",
+      selected: false,
+    },
+  },
+);
+
 export function FilterCard({
-  emoji,
+  icon: Icon,
   title,
-  subtitle,
+  count,
+  variant = "card",
   color = "red",
   selected = false,
   onClick,
 }: FilterCardProps) {
+  if (variant === "pill") {
+    return (
+      <button
+        className={filterPillVariants({ color, selected })}
+        onClick={onClick}
+      >
+        {Icon && <Icon className="w-4 h-4" strokeWidth={2.5} />}
+        {title}
+        {count !== undefined && <span className="opacity-70">({count})</span>}
+      </button>
+    );
+  }
+
   return (
     <button
       className={filterCardVariants({ color, selected })}
       onClick={onClick}
     >
-      <span data-dc-tpl="113" className="text-[26px]">
-        {emoji}
+      {Icon && <Icon className="w-8 h-8" strokeWidth={2} />}
+      <span className=" font-bold text-xl flex items-center gap-1.5">
+        {title}
+        {count !== undefined && (
+          <span className="font-extrabold opacity-70">({count})</span>
+        )}
       </span>
-      <span className=" font-bold text-[17px]">{title}</span>
-      <span className="text-[12px] opacity-60 font-semibold">{subtitle}</span>
     </button>
   );
 }

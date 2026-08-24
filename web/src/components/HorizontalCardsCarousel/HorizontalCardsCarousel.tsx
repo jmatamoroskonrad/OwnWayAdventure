@@ -2,14 +2,33 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FilterCard } from "@/components/FilterCard";
-import filterCardsMock from "@/mocks/filterCards.json";
-import type { FilterCardProps } from "@/components/FilterCard";
-import { useState } from "react";
+import { CATEGORY_META, DEFAULT_CATEGORY_META } from "@/data/tourCategories";
+import { useMemo } from "react";
+import { useTours } from "@/hooks/useTours";
+import type { HorizontalCardsCarouselProps } from "./HorizontalCardsCarousel.types";
 import "swiper/css";
 import "swiper/css/navigation";
 
-export function HorizontalCardsCarousel() {
-  const [selectedId, setSelectedId] = useState<number | null>(null);
+export function HorizontalCardsCarousel({
+  selectedCategory,
+  onSelectCategory,
+  variant = "card",
+}: HorizontalCardsCarouselProps) {
+  const { tours } = useTours();
+
+  const categories = useMemo(() => {
+    const counts = new Map<string, number>();
+    tours.forEach((tour) => {
+      if (!tour.category) return;
+      counts.set(tour.category, (counts.get(tour.category) ?? 0) + 1);
+    });
+
+    return Array.from(counts.entries()).map(([category, count]) => {
+      const meta = CATEGORY_META[category] ?? DEFAULT_CATEGORY_META;
+      return { title: category, count, ...meta };
+    });
+  }, [tours]);
+
   return (
     <div className="w-full mx-auto px-1 text-black py-4 overflow-hidden">
       <div className="flex items-center justify-between mb-4 ">
@@ -36,16 +55,17 @@ export function HorizontalCardsCarousel() {
         slidesPerView="auto"
         className="w-full overflow-visible!"
       >
-        {filterCardsMock.map((card) => (
-          <SwiperSlide key={card.id} className="w-auto!">
+        {categories.map((category) => (
+          <SwiperSlide key={category.title} className="w-auto!">
             <FilterCard
-              emoji={card.emoji}
-              title={card.title}
-              subtitle={card.subtitle}
-              color={card.color as FilterCardProps["color"]}
-              selected={selectedId === card.id}
+              variant={variant}
+              icon={category.icon}
+              title={category.title}
+              count={category.count}
+              color={category.color}
+              selected={selectedCategory === category.title}
               onClick={() =>
-                setSelectedId(card.id === selectedId ? null : card.id)
+                onSelectCategory(category.title === selectedCategory ? null : category.title)
               }
             />
           </SwiperSlide>

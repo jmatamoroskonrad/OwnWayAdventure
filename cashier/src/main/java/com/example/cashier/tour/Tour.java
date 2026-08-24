@@ -34,6 +34,9 @@ public class Tour {
     @Column(nullable = false)
     private int guests;
 
+    @Column(nullable = false)
+    private String category;
+
     @Column(length = 2000)
     private String goodToKnow;
 

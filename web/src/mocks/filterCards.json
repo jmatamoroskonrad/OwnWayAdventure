@@ -1,8 +1,5 @@
 [
-  { "id": 1, "emoji": "🌋", "title": "Volcano", "subtitle": "volcano description", "color": "red" },
-  { "id": 2, "emoji": "🌋", "title": "Volcano", "subtitle": "volcano description", "color": "blue" },
-  { "id": 3, "emoji": "🌋", "title": "Volcano", "subtitle": "volcano description", "color": "brown" },
-  { "id": 4, "emoji": "🌋", "title": "Volcano", "subtitle": "volcano description", "color": "red" },
-  { "id": 5, "emoji": "🌋", "title": "Volcano", "subtitle": "volcano description", "color": "green" },
-  { "id": 6, "emoji": "🌋", "title": "Volcano", "subtitle": "volcano description", "color": "red" }
+  { "id": 1, "emoji": "🦥", "title": "Wildlife", "subtitle": "Spot sloths, birds and more", "color": "green" },
+  { "id": 2, "emoji": "🐎", "title": "Adventure", "subtitle": "River crossings and thrills", "color": "brown" },
+  { "id": 3, "emoji": "🥾", "title": "Hiking", "subtitle": "Trails around the volcano", "color": "red" }
 ]

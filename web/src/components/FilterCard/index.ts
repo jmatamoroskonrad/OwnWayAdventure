@@ -1,2 +1,2 @@
 export {FilterCard} from "./FilterCard"
-export type { FilterCardProps } from "./FilterCard.types"
+export type { FilterCardProps, FilterCardColor, FilterCardVariant } from "./FilterCard.types"

@@ -14,6 +14,7 @@ public record CreateTourRequest(
         @Positive(message = "Price must be greater than zero") int price,
         boolean popular,
         @Positive(message = "Guests must be greater than zero") int guests,
+        @NotBlank(message = "Category is required") String category,
         String goodToKnow,
         String imageUrl,
         @NotEmpty(message = "At least one tag is required") @Valid List<TourTagRequest> tags,
