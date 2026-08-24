@@ -12,4 +12,5 @@ export type TimeLineProps = {
   activity?: TimeLineActivity;
   onEdit?: () => void;
   onRemove?: () => void;
+  onSetTime?: (time: string) => void;
 };

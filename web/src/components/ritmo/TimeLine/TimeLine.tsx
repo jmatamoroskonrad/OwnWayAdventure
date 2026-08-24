@@ -1,10 +1,26 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Tag } from "@/components/ui/tag";
+import { Check } from "lucide-react";
+import { formatTimeInputTo12Hour } from "@/utils/dateUtils";
 import type { TimeLineProps } from "./TimeLine.types";
 
-export function TimeLine({ time, activity, onEdit, onRemove }: TimeLineProps) {
-  const [timeValue, timePeriod] = time.split(" ");
+export function TimeLine({
+  time,
+  activity,
+  onEdit,
+  onRemove,
+  onSetTime,
+}: TimeLineProps) {
+  const [draftTime, setDraftTime] = useState("");
+  const hasTime = Boolean(time) && time !== "TBD";
+  const [timeValue, timePeriod] = hasTime ? time.split(" ") : ["--:--", ""];
+
+  const handleConfirmTime = () => {
+    if (!draftTime || !onSetTime) return;
+    onSetTime(formatTimeInputTo12Hour(draftTime));
+  };
 
   return (
     <div className="flex gap-2.5 max-w-125">
@@ -48,24 +64,52 @@ export function TimeLine({ time, activity, onEdit, onRemove }: TimeLineProps) {
                 <Tag variant="outline">{activity.duration}</Tag>
                 <Tag variant="outline">{activity.guests} guests</Tag>
               </div>
-              <div className="flex gap-2.5 pt-0.5">
-                <Button
-                        effect="glow"
-                  variant="outline"
-                  onClick={onEdit}
-                  className="min-h-13 text-[14px] px-4.5 border-primary-foreground/50 hover:text-primary-text hover:bg-primary-foreground hover:border-primary-foreground "
-                >
-                  Edit
-                </Button>
-                <Button
-                effect="glow"
-                  variant="outline"
-                  onClick={onRemove}
-                  className="min-h-13 text-[14px] px-4.5 ml-auto shadow-none text-primary-red border border-primary-red/50 hover:text-primary-text hover:bg-primary-red hover:border-primary-red "
-                >
-                  Remove
-                </Button>
-              </div>
+
+              {!hasTime && onSetTime && (
+                <div className="flex items-center gap-2 pt-0.5">
+                  <input
+                    type="time"
+                    value={draftTime}
+                    onChange={(e) => setDraftTime(e.target.value)}
+                    className="px-5 py-4 rounded-2xl border border-primary-foreground/10 bg-primary-background/5 text-2xl font-bold text-primary-foreground transition-all duration-200 outline-none focus:border-primary-foreground/40 focus:ring-4 focus:ring-primary-foreground/5 hover:bg-primary-background/10 cursor-pointer [&::-webkit-calendar-picker-indicator]:scale-150  [&::-webkit-calendar-picker-indicator]:opacity-50 [&::-webkit-calendar-picker-indicator]:hover:opacity-100"
+                  />
+
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    disabled={!draftTime}
+                    onClick={handleConfirmTime}
+                    className=" px-2 py-0"
+                  >
+                    Set time
+                  </Button>
+                </div>
+              )}
+
+              {(onEdit || onRemove) && (
+                <div className="flex gap-2.5 pt-0.5">
+                  {onEdit && (
+                    <Button
+                      effect="glow"
+                      variant="outline"
+                      onClick={onEdit}
+                      className="min-h-13 min-w-24 text-[14px] px-4.5 border-primary-foreground/50 hover:text-primary-text hover:bg-primary-foreground hover:border-primary-foreground "
+                    >
+                      Edit
+                    </Button>
+                  )}
+                  {onRemove && (
+                    <Button
+                      effect="glow"
+                      variant="outline"
+                      onClick={onRemove}
+                      className="min-h-13 text-[14px] px-4.5 ml-auto shadow-none text-primary-red border border-primary-red/50 hover:text-primary-text hover:bg-primary-red hover:border-primary-red "
+                    >
+                      Remove
+                    </Button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         ) : (

@@ -19,3 +19,13 @@ export const parseTimeToMinutes = (time: string): number => {
 
   return hours * 60 + minutes;
 };
+
+export const formatTimeInputTo12Hour = (value: string): string => {
+  const [hoursStr, minutesStr] = value.split(":");
+  let hours = Number(hoursStr);
+  const minutes = minutesStr ?? "00";
+  const period = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  if (hours === 0) hours = 12;
+  return `${hours}:${minutes} ${period}`;
+};

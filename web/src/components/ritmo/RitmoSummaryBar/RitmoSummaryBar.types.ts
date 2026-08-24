@@ -5,4 +5,5 @@ export type RitmoSummaryBarProps = {
   total: number;
   onConfirm?: () => void;
   disclaimer?: string;
+  paid?: boolean;
 };

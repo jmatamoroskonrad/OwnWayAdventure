@@ -1,5 +1,6 @@
 import { Button } from "../ui/button"; 
 import type { HeroBannerProps } from "./HeroBanner.types"; 
+import { NavLink } from "react-router-dom";
 
 export function HeroBanner({ image, alt }: HeroBannerProps) { 
   return ( 
@@ -32,15 +33,11 @@ export function HeroBanner({ image, alt }: HeroBannerProps) {
         <p className="text-[16px] max-w-[46ch] text-primary-text text-wrap font-medium ">Volcano trails, lake water, hot springs. Pick the moment you want and we will shape them into your days - one afternoon or a whole stay</p>
 
         <div className="mt-2 flex flex-col gap-3 tablet:flex-row tablet:items-center"> 
-          <Button size="lg" effect="glow" className="w-full tablet:w-auto"> 
-            Plan my days 
-          </Button> 
-          {/* <Button 
-            size="lg" 
-            variant="outline"
-          > 
-            Plan my days 
-          </Button>  */}
+           <Button size="lg"  effect="glow"  className="w-full tablet:w-auto" asChild >
+               <NavLink to="ritmo">
+                Plan my days
+               </NavLink>
+            </Button>
         </div> 
       </div>
     </div> 

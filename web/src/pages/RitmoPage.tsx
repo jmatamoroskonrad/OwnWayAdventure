@@ -4,22 +4,24 @@ import { formatToLongDate, parseTimeToMinutes } from "@/utils/dateUtils";
 import { TimeLine } from "@/components/ritmo/TimeLine";
 import { RitmoSummaryBar } from "@/components/ritmo/RitmoSummaryBar";
 import { BookTourPopover } from "@/components/BookTour";
+import { PaymentModal } from "@/components/PaymentModal";
 import { useRitmo } from "@/hooks/useRitmo";
 import { useTours } from "@/hooks/useTours";
 import { useRitmoSummary } from "@/hooks/useRitmoSummary";
 
 export default function RitmoPage() {
   const today: string = formatToLongDate();
-  const { bookings, removeBooking } = useRitmo();
+  const { bookings, removeBooking, updateBooking } = useRitmo();
   const { getTourById } = useTours();
   const { experienceCount, hoursPlanned, guestCount, total } =
     useRitmoSummary();
   const [editingTourId, setEditingTourId] = useState<string | null>(null);
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+  const [isPaid, setIsPaid] = useState(false);
 
+  const getSortValue = (slot: string) => (slot ? parseTimeToMinutes(slot) : Infinity);
   const sortedBookings = [...bookings].sort(
-    (a, b) =>
-      parseTimeToMinutes(a.slot || "12:00 AM") -
-      parseTimeToMinutes(b.slot || "12:00 AM"),
+    (a, b) => getSortValue(a.slot) - getSortValue(b.slot),
   );
 
   const editingTour = editingTourId ? getTourById(editingTourId) : undefined;
@@ -37,13 +39,10 @@ export default function RitmoPage() {
             ${total}
           </span>
         </div>
-
         {sortedBookings.length === 0 && <TimeLine time="9:00 AM" />}
-
         {sortedBookings.map((booking) => {
           const tour = getTourById(booking.tourId);
           if (!tour) return null;
-
           return (
             <TimeLine
               key={booking.bookingId}
@@ -58,19 +57,19 @@ export default function RitmoPage() {
               }}
               onEdit={() => setEditingTourId(booking.tourId)}
               onRemove={() => removeBooking(booking.bookingId)}
+              onSetTime={(time) => updateBooking(booking.bookingId, { slot: time })}
             />
           );
         })}
       </div>
-
       <RitmoSummaryBar
         experienceCount={experienceCount}
         hoursPlanned={hoursPlanned}
         guestCount={guestCount}
         total={total}
-        onConfirm={() => {}}
+        paid={isPaid}
+        onConfirm={() => setIsPaymentOpen(true)}
       />
-
       {editingTour && (
         <BookTourPopover
           open={Boolean(editingTour)}
@@ -80,6 +79,12 @@ export default function RitmoPage() {
           onClose={() => setEditingTourId(null)}
         />
       )}
+      <PaymentModal
+        open={isPaymentOpen}
+        total={total}
+        onClose={() => setIsPaymentOpen(false)}
+        onPaid={() => setIsPaid(true)}
+      />
     </div>
   );
 }

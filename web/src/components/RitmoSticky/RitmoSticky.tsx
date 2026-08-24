@@ -1,5 +1,6 @@
 import { Button } from "../ui/button";
 import type { RitmoStickyProps } from "./RitmoSticky.types";
+import { NavLink } from "react-router-dom";
 
 export function RitmoSticky({ title, tourCount }: RitmoStickyProps) {
   return (
@@ -14,9 +15,8 @@ export function RitmoSticky({ title, tourCount }: RitmoStickyProps) {
             {title}
           </span>
         </div>
-
-        <Button size="sm" className="shrink-0">
-          View Plan
+        <Button size="sm" className="shrink-0" asChild>
+          <NavLink to="ritmo">View Plan</NavLink>
         </Button>
       </div>
     </div>

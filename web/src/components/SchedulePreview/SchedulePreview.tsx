@@ -2,7 +2,8 @@ import type { SchedulePreviewProps } from "./SchedulePreview.types";
 import { ScheduleActivityCardsScroll } from "@/components/ScheduleActivityCardsScroll";
 import { formatToLongDate } from "@/utils/dateUtils";
 import { Button } from "../ui/button";
-import { MoveRight} from "lucide-react"
+import { MoveRight } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 const today: string = formatToLongDate();
 
@@ -35,9 +36,11 @@ export function SchedulePreview({
               <span>{totalAmount}</span>
             </div>
           </div>
-          <Button size="sm"  effect="glow"  >
-          See my days <MoveRight className="h-5 w-5 m-2" strokeWidth={3} />
-        </Button>
+          <Button size="sm" effect="glow" asChild>
+            <NavLink to="ritmo">
+              Plan my days <MoveRight className="h-5 w-5 m-2" strokeWidth={3} />
+            </NavLink>
+          </Button>
         </div>
       </div>
       <ScheduleActivityCardsScroll />

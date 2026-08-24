@@ -73,7 +73,7 @@ export function TourCard({
           </div>
           <div className="flex gap-2.5 ml-auto flex-wrap">
             <Button size="sm" variant="outline" effect="glow" asChild >
-               <NavLink to={`details/${id}`}>
+               <NavLink to={`/details/${id}`}>
                  Details
                </NavLink>
             </Button>
