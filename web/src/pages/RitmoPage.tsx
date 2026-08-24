@@ -85,6 +85,7 @@ export default function RitmoPage() {
         onClose={() => setIsPaymentOpen(false)}
         onPaid={() => setIsPaid(true)}
       />
+      
     </div>
   );
 }

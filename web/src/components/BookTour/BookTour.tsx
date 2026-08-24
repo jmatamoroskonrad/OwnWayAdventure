@@ -11,15 +11,17 @@ export function BookTour({ slots, price, tourId, onReserved }: BookTourProps) {
     maxGuests,
     atMaxGuests,
     totalPrice,
+    submitting,
+    error,
     selectSlot,
     increaseGuests,
     decreaseGuests,
     toggleReservation,
   } = useBookTourState(tourId, slots, price);
 
-  const handleReserve = () => {
+  const handleReserve = async () => {
     const wasReserved = reserved;
-    toggleReservation();
+    await toggleReservation();
     onReserved?.(!wasReserved);
   };
 
@@ -83,8 +85,11 @@ export function BookTour({ slots, price, tourId, onReserved }: BookTourProps) {
             </span>
           </div>
         </div>
-        <Button variant={reserved ? "success" : "primary"} onClick={handleReserve}>
-          {reserved ? "On your Ritmo" : "Make Reservation"}
+        {error && (
+          <span className="text-sm font-extrabold text-primary-red">{error}</span>
+        )}
+        <Button variant={reserved ? "success" : "primary"} onClick={handleReserve} disabled={submitting}>
+          {submitting ? "Please wait..." : reserved ? "On your Ritmo" : "Make Reservation"}
         </Button>
       </div>
     </div>

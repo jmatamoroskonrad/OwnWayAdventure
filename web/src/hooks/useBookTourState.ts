@@ -13,6 +13,8 @@ export function useBookTourState(tourId: string, slots: TourSlot[], price: numbe
 
   const [selectedSlot, setSelectedSlot] = useState(existingBooking?.slot || slots[0]?.time || "");
   const [guests, setGuests] = useState(existingBooking?.guests || 1);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const currentSlot = slots.find((slot) => slot.time === selectedSlot);
   const maxGuests = hasSlots ? currentSlot?.spotsLeft ?? 1 : NO_SLOTS_MAX_GUESTS;
@@ -22,6 +24,7 @@ export function useBookTourState(tourId: string, slots: TourSlot[], price: numbe
   const selectSlot = (slot: TourSlot) => {
     setSelectedSlot(slot.time);
     setGuests((current) => Math.min(current, slot.spotsLeft));
+    setError(null);
   };
 
   const increaseGuests = () => {
@@ -32,11 +35,19 @@ export function useBookTourState(tourId: string, slots: TourSlot[], price: numbe
     setGuests((current) => Math.max(1, current - 1));
   };
 
-  const toggleReservation = () => {
-    if (existingBooking) {
-      removeBooking(existingBooking.bookingId);
-    } else {
-      addBooking({ tourId, slot: selectedSlot, guests });
+  const toggleReservation = async () => {
+    setError(null);
+    setSubmitting(true);
+    try {
+      if (existingBooking) {
+        await removeBooking(existingBooking.bookingId);
+      } else {
+        await addBooking({ tourId, slot: selectedSlot, guests });
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong");
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -48,6 +59,8 @@ export function useBookTourState(tourId: string, slots: TourSlot[], price: numbe
     maxGuests,
     atMaxGuests,
     totalPrice,
+    submitting,
+    error,
     selectSlot,
     increaseGuests,
     decreaseGuests,

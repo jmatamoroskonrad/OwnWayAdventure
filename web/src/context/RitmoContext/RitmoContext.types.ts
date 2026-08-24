@@ -14,8 +14,8 @@ export type UpdateBookingInput = {
 export type RitmoContextValue = {
   bookings: RitmoBooking[];
   isInRitmo: (tourId: string) => boolean;
-  addBooking: (input: AddBookingInput) => void;
-  removeBooking: (bookingId: string) => void;
-  updateBooking: (bookingId: string, input: UpdateBookingInput) => void;
-  toggleRitmo: (tourId: string, defaultSlot: string, defaultGuests: number) => void;
+  addBooking: (input: AddBookingInput) => Promise<void>;
+  removeBooking: (bookingId: string) => Promise<void>;
+  updateBooking: (bookingId: string, input: UpdateBookingInput) => Promise<void>;
+  toggleRitmo: (tourId: string, defaultSlot: string, defaultGuests: number) => Promise<void>;
 };

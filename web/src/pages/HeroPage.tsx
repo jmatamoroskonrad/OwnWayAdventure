@@ -8,6 +8,9 @@ import { TourCard } from "@/components/TourCard";
 import { useTours } from "@/hooks/useTours";
 import { useRitmo } from "@/hooks/useRitmo";
 import { useRitmoSummary } from "@/hooks/useRitmoSummary";
+import { Button } from "@/components/ui/button";
+import { NavLink } from "react-router-dom";
+
 export default function HeroPage() {
   const { tours } = useTours();
   const { bookings } = useRitmo();
@@ -55,6 +58,9 @@ export default function HeroPage() {
             slots={tour.slots}
           />
         ))}
+        <Button effect="glow" className="w-full" variant="outline" asChild>
+          <NavLink to="tours">View More Tours</NavLink>
+        </Button>
       </div>
     </div>
   );
