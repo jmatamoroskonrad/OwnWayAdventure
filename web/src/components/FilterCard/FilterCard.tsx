@@ -66,15 +66,19 @@ export function FilterCard({
   selected = false,
   onClick,
 }: FilterCardProps) {
+  const accessibleLabel = `Filter tours by ${title}`;
+
   if (variant === "pill") {
     return (
       <button
         className={filterPillVariants({ color, selected })}
         onClick={onClick}
+        aria-label={accessibleLabel}
+        aria-pressed={selected}
       >
-        {Icon && <Icon className="w-4 h-4" strokeWidth={2.5} />}
+        {Icon && <Icon className="w-4 h-4" strokeWidth={2.5} aria-hidden="true" />}
         {title}
-        {count !== undefined && <span className="opacity-70">({count})</span>}
+        {count !== undefined && <span className="opacity-70" aria-hidden="true">({count})</span>}
       </button>
     );
   }
@@ -83,12 +87,14 @@ export function FilterCard({
     <button
       className={filterCardVariants({ color, selected })}
       onClick={onClick}
+      aria-label={accessibleLabel}
+      aria-pressed={selected}
     >
-      {Icon && <Icon className="w-8 h-8" strokeWidth={2} />}
+      {Icon && <Icon className="w-8 h-8" strokeWidth={2} aria-hidden="true" />}
       <span className=" font-bold text-xl flex items-center gap-1.5">
-        {title}
+        <span aria-hidden="true">{title}</span>
         {count !== undefined && (
-          <span className="font-extrabold opacity-70">({count})</span>
+          <span className="font-extrabold opacity-70" aria-hidden="true">({count})</span>
         )}
       </span>
     </button>

@@ -1,7 +1,8 @@
-import type { Tour } from "@/types/tour"
+import type { Tour } from "@/types/tour";
 
 export type TourContextValue = {
-    tours: Tour[];
-    loading: boolean;
-    getTourById: (id: string) => Tour | undefined;
+  tours: Tour[];
+  loading: boolean;
+  getTourById: (id: string) => Tour | undefined;
+  deleteTour: (id: string) => Promise<void>;
 };

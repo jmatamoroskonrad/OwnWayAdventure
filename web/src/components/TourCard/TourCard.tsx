@@ -21,15 +21,20 @@ export function TourCard({
   const inRitmo = isInRitmo(id);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
+  const titleId = `tour-${id}-title`;
+
   return (
-    <div className="flex flex-col rounded-4xl bg-primary-card-background border-primary-background/12 shadow-2xl transition-all duration-300 mx-2 tablet:mx-0  ">
+    <article
+      aria-labelledby={titleId}
+      className="flex flex-col rounded-4xl bg-primary-card-background border-primary-background/12 shadow-2xl transition-all duration-300 mx-2 tablet:mx-0  "
+    >
       <div className="relative h-58 tablet:h-80 shrink-0">
         <div className="absolute inset-0 overflow-hidden rounded-t-4xl">
           <img
             data-dc-tpl="60"
             id="ra-hero"
             src={imageUrl}
-            alt="image"
+            alt=""
             className="w-full h-full object-cover"
           />
         </div>
@@ -43,7 +48,10 @@ export function TourCard({
       </div>
       <div className="flex flex-col gap-4 p-6  h-full ">
         <div className="flex flex-col gap-3">
-          <h3 className="font-bricolage font-extrabold text-3xl tracking-[-0.03em] max-w-[20ch]">
+          <h3
+            id={titleId}
+            className="font-bricolage font-extrabold text-3xl tracking-[-0.03em] max-w-[20ch]"
+          >
             {" "}
             {title}{" "}
           </h3>
@@ -63,31 +71,45 @@ export function TourCard({
             <span className="font-bold uppercase text-primary-foreground/45  tracking-[0.14em] ">
               From
             </span>
-            <span className="font-bricolage font-extrabold text-3xl tracking-[-0.02em] leading-[1.1] ">
-              ${price}
-              <span className="text-sm text-primary-foreground/50 font-semibold">
-                {" "}
-                /person
+            <span
+              aria-label={`${price} dollars per person`}
+              className="font-bricolage font-extrabold text-3xl tracking-[-0.02em] leading-[1.1] "
+            >
+              <span aria-hidden="true">
+                ${price}
+                <span className="text-sm text-primary-foreground/50 font-semibold">
+                  {" "}
+                  /person
+                </span>
               </span>
             </span>
           </div>
           <div className="flex gap-2.5 ml-auto flex-wrap">
-            <Button size="sm" variant="outline" effect="glow" asChild >
-               <NavLink to={`/details/${id}`}>
-                 Details
-               </NavLink>
+            <Button size="sm" variant="outline" effect="glow" asChild>
+              <NavLink
+                to={`/details/${id}`}
+                aria-label={`Details for ${title}`}
+              >
+                Details
+              </NavLink>
             </Button>
             <Button
               size="sm"
               variant={inRitmo ? "success" : "primary"}
               className="gap-1"
               effect="glow"
+              aria-label={
+                inRitmo ? `${title} is in your Ritmo` : `Add ${title} to Ritmo`
+              }
+              aria-pressed={inRitmo}
               onClick={(event) => {
                 event.stopPropagation();
                 setIsPopoverOpen(true);
               }}
             >
-              {inRitmo && <Check size={16} strokeWidth={3} />}
+              {inRitmo && (
+                <Check size={16} strokeWidth={3} aria-hidden="true" />
+              )}
               {inRitmo ? "In your Ritmo" : "Add to Ritmo"}
             </Button>
           </div>
@@ -101,6 +123,6 @@ export function TourCard({
         price={price}
         onClose={() => setIsPopoverOpen(false)}
       />
-    </div>
+    </article>
   );
 }

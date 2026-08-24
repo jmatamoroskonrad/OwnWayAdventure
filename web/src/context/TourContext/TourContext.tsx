@@ -1,6 +1,6 @@
 import { createContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import toursMock from "@/mocks/tours.json";
-import { fetchTours, isApiEnabled } from "@/services/tourApi";
+import { deleteTourApi, fetchTours, isApiEnabled } from "@/services/tourApi";
 import type { Tour } from "@/types/tour";
 import type { TourContextValue } from "./TourContext.types";
 
@@ -12,30 +12,27 @@ export function TourProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!isApiEnabled) return;
-
     let cancelled = false;
 
     fetchTours()
-      .then((data) => {
-        if (!cancelled) setTours(data);
-      })
-      .catch(() => {
-        if (!cancelled) setTours(toursMock as Tour[]); 
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
+      .then((data) => { if (!cancelled) setTours(data); })
+      .catch(() => { if (!cancelled) setTours(toursMock as Tour[]); })
+      .finally(() => { if (!cancelled) setLoading(false); });
 
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, []);
+
+  const deleteTour = async (id: string): Promise<void> => {
+    if (isApiEnabled) await deleteTourApi(id);
+    setTours((current) => current.filter((tour) => tour.id !== id));
+  };
 
   const value = useMemo<TourContextValue>(
     () => ({
       tours,
       loading,
       getTourById: (id: string) => tours.find((tour) => tour.id === id),
+      deleteTour,
     }),
     [tours, loading],
   );
